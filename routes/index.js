@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/payment', function(req, res) {
-    res.render('payment',{total_price: req.query.p, title:`It's pay day`, subTitle:`Show me the money`});
+    res.render('payment',{totalPrice: req.query.p, title:`It's pay day`, subTitle:`Show me the money`});
 });
 
 router.post('/payment', function(req, res){
@@ -23,7 +23,7 @@ router.post('/payment', function(req, res){
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         country: req.body.lastName,
-        totalPrice: req.body.totalPrice,
+        totalPrice: req.body.totalPrice
     };
 
     //server validation

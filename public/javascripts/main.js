@@ -4,12 +4,12 @@ $(function(){
 
     $("select", ".ticketInfo").change(function() {
         // change total price and set it in the url
-        var num_of_tickets = parseInt($(this).find('option:selected').text());
+        var numOfTickets = parseInt($(this).find('option:selected').text());
         var price = parseInt($('.columns').find('.price').text());
-        var total_price = num_of_tickets * price;
+        var totalPrice = numOfTickets * price;
 
-        $('.totalPrice').text(total_price);
-        $(".paymentLink", ".ticketInfo").attr("href", "/payment?=" + total_price);
+        $('.totalPrice span').text(totalPrice);
+        $(".paymentLink", ".ticketInfo").attr("href", "/payment?p=" + totalPrice);
     });
 
     $('#paymentForm').submit(function(e){
@@ -22,14 +22,21 @@ $(function(){
             /*body["date"] = Date.now();*/
         });
         $('#paymentForm').hide();
+        $('#loadingAnimation').show();
         $.post('/payment', body).done(function(data){
-            $(form).show();
-            alert(data);
+            $('#loadingAnimation').hide();
+            $('#thankYouMessage').show();
+            $('#thankYouMessage').fadeOut(2700, function() {
+                $(form).show();
+            });
+
+            //alert(data);
             /*
              // redirect to home page
              window.location.replace("../");
              */
         }).fail(function(e){
+            $('#loadingAnimation').hide();
             $(form).show();
             alert(e);
         });

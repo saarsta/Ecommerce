@@ -1,17 +1,40 @@
 
-<h1> Enter your details</h1>
+<div class="mainContent">
+    <form id="paymentForm">
+        <h1 class="title"> Enter your details</h1>
+        <div>
+            <div class="formRow">
+                <select name="country" required>
+                    <option value="il">Israel</option>
+                    <option value="us">USA</option>
+                    <option value="uk">United Kingdom</option>
+                </select>
+            </div>
+            <div class="formRow">
+                <input class="halfRow" type="text"  required name="firstName" placeholder="First name">
+                <input class="halfRow" type="text" required name="lastName" placeholder="Last name">
+            </div>
+            <div class="formRow">
+                <input type="email" required name="email" placeholder="Your email">
+            </div>
+            <div class="formRow">
+                <input type="text" required name="totalPrice" value="$<%=totalPrice%>" disabled>
+            </div>
+            <div class="formRow marginRight">
+                <button type="submit">Order Now</button>
+            </div>
+        </div>
+    </form>
+</div>
 
-<form id="paymentForm">
-    <input type="email" required name="email" placeholder="Your email">
-    <input type="text"  required name="firstName" placeholder="First name">
-    <input type="text" required name="lastName" placeholder="Last name">
-    <input type="text" required name="totalPrice" value="$<%=total_price%>" disabled>
-    <select name="country" required>
-        <option value="il">Israel</option>
-        <option value="us">USA</option>
-        <option value="uk">United Kingdom</option>
-    </select>
-    <button type="submit">Order Now</button>
-</form>
+<div id="loadingAnimation">
+    <div id="escapingBallG">
+        <div id="escapingBall_1" class="escapingBallG"></div>
+    </div>
+</div>
+
+<div id="thankYouMessage">
+    <h1 class="title"> Your order is on it's way! </h1>
+</div>
 
 <div class="modal"></div>
