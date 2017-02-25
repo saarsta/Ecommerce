@@ -1,0 +1,17 @@
+
+<h1> Enter your details</h1>
+
+<form id="paymentForm">
+    <input type="email" required name="email" placeholder="Your email">
+    <input type="text"  required name="firstName" placeholder="First name">
+    <input type="text" required name="lastName" placeholder="Last name">
+    <input type="text" required name="totalPrice" value="$<%=total_price%>" disabled>
+    <select name="country" required>
+        <option value="il">Israel</option>
+        <option value="us">USA</option>
+        <option value="uk">United Kingdom</option>
+    </select>
+    <button type="submit">Order Now</button>
+</form>
+
+<div class="modal"></div>
