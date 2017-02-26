@@ -22,7 +22,7 @@ router.post('/payment', function(req, res){
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        country: req.body.lastName,
+        country: req.body.country,
         totalPrice: req.body.totalPrice
     };
 

@@ -28,28 +28,20 @@ var auth = function (req, res, next) {
 
 router.get('/',auth, function(req,res){
 
-    payments.getAll(function(err, trans){
+    payments.getAll(function(err, transRows){
         if (err){
             return res.status(500).send(err.stack);
         }
+        transRows = _.sortBy(transRows, function(t) { return t.timestamp; });
 
-        res.render('admin',{trans: trans});
+        var c = 1;
+        transRows = _.map(transRows, function (row) {
+            row.lineNumber = c++;
+            return row;
+        });
+        res.render('admin',{trans: transRows});
     });
 
-    /*// read file line by line (each purchase)
-    fs.readFile(__dirname + '/../db.txt','utf8',(e, str) => {
-        if(e)
-            return res.status(500).send(e.stack);
-        console.log(str);
-        let counter = 1;
-        let users = str.split('\n').map(function(line) {
-            let [email, firstName, lastName, country, date] = line.split(',');
-            return {lineNumber : counter++, email, firstName, lastName, country, date : date && new Date(parseInt(date)).toString()}; // parse date to strinng format
-        });
-
-        users = _.reject(users, function(user){ return !user.email}); // make sure there is no empty rows
-        res.render('admin',{users:users});
-    });*/
 });
 
 router.delete('/payment', function(req, res){
@@ -60,26 +52,6 @@ router.delete('/payment', function(req, res){
         if (err) return console.log(err);
         res.send('Thank you too');
     });
-
-    /*//delete purchase line
-     fs.readFile(__dirname + '/../db.txt', 'utf8', function (err, data) {
-     if (err) return console.log(err);
-
-     let lines = data.split('\n');
-
-     //get purchase line and empty it, and delete it
-     //lines = _.each(lines, function(line){  return ""});
-     console.log("date --> " + date.getTime())
-     console.log("before --> " + lines)
-     lines = _.reject(lines, function(line){ return line.indexOf(date.getTime()) !== -1;});
-     console.log("after --> " + lines)
-
-     //////////////////////////////having problem with this
-     fs.writeFile(__dirname + '/../db1.txt', lines.join('\n'), 'utf8', function (err) {
-     if (err) return console.log(err);
-     res.send('Thank you too');
-     });
-     });*/
 });
 
 

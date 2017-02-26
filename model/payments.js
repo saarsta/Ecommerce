@@ -3,56 +3,31 @@ var _ = require('underscore');
 var config = require('../config.js');
 var emailer = require('./emailer.js');
 var kvstore = require('../infra/kvstore.js');
+var ppwrapper = require('../infra/ppwrapper.js');
+
 const uuidV1 = require('uuid/v1'); // Generate a v1 UUID (time-based)
 
 payments = {};
 
-//payments.dbFilePath = __dirname + '/../db-payments.txt' /*config.db.Path*/;
-/*payments.dbFilePath = config.db.Path;*/
 kvstore.setDbPath(config.db.Path);
 
 payments.getAll = function(cb) {
-    kvstore.getAll(function(err, kvList) {
+    kvstore.getAllAsList(function(err, kvList) {
         let transRows = [];
-        let counter = 1;
         _.forEach(kvList, function (row) {
             var trans = row.v;
             trans.uuid = row.k;
-            trans.lineNumber = counter++;
             transRows.push(trans);
         });
         cb(err, transRows);
     });
-    //fs.readFile(payments.dbFilePath,'utf8',(e, str) => {
-    //    if(e) {
-    //        cb(e)
-    //    } else {
-    //        console.log(str);
-    //        let counter = 1;
-    //        let transRows = str.split('\n')
-    //            .filter(function (line) {
-    //                return line != '';
-    //            }).map(function (line) {
-    //                var uuidTransIndex = line.indexOf(' ');
-    //                var uuid = line.substring(0, uuidTransIndex);
-    //                var trans = uuidTransIndex != -1 && JSON.parse(line.substring(uuidTransIndex + 1));
-    //                trans.lineNumber = counter++;
-    //                trans.uuid = uuid;
-    //                return trans;
-    //        });
-    //
-    //        // validate rows
-    //        //transRows = _.reject(transRows, function(trans){ return ( !trans || (trans.uuid == ""))});
-    //
-    //        cb(e, transRows);
-    //
-    //    }
-    //});
 };
 
 payments.addPayment = function(trans, cb) {
 
     var uuid = uuidV1();
+    trans.timestamp = new Date().getTime();
+
     kvstore.put(uuid, trans, function (err) {
         if(err) {
             console.error(err);

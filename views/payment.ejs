@@ -10,18 +10,18 @@
                     <option value="uk">United Kingdom</option>
                 </select>
             </div>
-            <div class="formRow">
-                <input class="halfRow" type="text"  required name="firstName" placeholder="First name">
-                <input class="halfRow" type="text" required name="lastName" placeholder="Last name">
+            <div class="formRow rowContainer">
+                <input class="halfRow floatRight" type="text"  required name="firstName" placeholder="First name">
+                <input class="halfRow floatLeft" type="text" required name="lastName" placeholder="Last name">
             </div>
             <div class="formRow">
                 <input type="email" required name="email" placeholder="Your email">
             </div>
             <div class="formRow">
-                <input type="text" required name="totalPrice" value="$<%=totalPrice%>" disabled>
+                <input class="totalPrice" type="text" required name="totalPrice" value="Total: $<%=totalPrice%>" disabled>
             </div>
-            <div class="formRow marginRight">
-                <button type="submit">Order Now</button>
+            <div class="formRow alignToRight">
+                <button class="button" type="submit">Place Order</button>
             </div>
         </div>
     </form>
@@ -35,6 +35,11 @@
 
 <div id="thankYouMessage">
     <h1 class="title"> Your order is on it's way! </h1>
+</div>
+
+<div class="orderConfirmed">
+    <h2 class="title"> Order confirmation was sent to: <span class="email"></span> </h2>
+    <a href="/" class="button ">Continue Shopping</a>
 </div>
 
 <div class="modal"></div>
