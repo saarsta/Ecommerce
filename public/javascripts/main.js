@@ -28,7 +28,7 @@ $(function(){
 
         $(container).hide();
         $('#loadingAnimation').show();
-        $.post('/payment', body).done(function(data){
+        $.post('/payment', body).done(function(){
             var thankMessage = $('#thankYouMessage');
             $('#loadingAnimation').hide();
             thankMessage.show();
