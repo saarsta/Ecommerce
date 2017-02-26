@@ -10225,6 +10225,7 @@ var $ = require('jquery');
 
 $(function(){
 
+    // when changong number of tickets
     $("select", ".ticketInfo").change(function() {
         // change total price and set it in the url
         var numOfTickets = parseInt($(this).find('option:selected').text());
@@ -10235,12 +10236,15 @@ $(function(){
         $(".paymentLink", ".ticketInfo").attr("href", "/payment?p=" + totalPrice);
     });
 
+    // on submit $.POST a new purchase
     $('#paymentForm').submit(function(e){
         e.preventDefault();
         var form = this;
         var container = $(form).closest('.mainContent');
-        var params = ['email','firstName','lastName','country', 'totalPrice'];
+        var params = ['email','firstName','lastName','country'];
         var body = {};
+        body = {totalPrice: $('[name="totalPrice"]', form).data('price')};
+
         params.forEach(function(param){
             body[param] = $('[name="' + param + '"]',form).val();
         });
@@ -10255,16 +10259,16 @@ $(function(){
                 var $orderConfirmed = $('.orderConfirmed');
                 $orderConfirmed.find('.email').text(body['email']);
                 $orderConfirmed.show();
-
             });
         }).fail(function(e){
             $('#loadingAnimation').hide();
             $(container).show();
-            alert(e);
+            console.log(e);
+            alert("Error, try again");
         });
     });
 
-
+    // delete purchase line (admin)
     $(".delete").on("click", function(){
         var tr = $(this).parent(".trans");
         var id = tr.data("id");
@@ -10273,7 +10277,7 @@ $(function(){
             url: '/admin/payment?id=' + id,
             type: 'DELETE',
             success: function(result) {
-                $(tr).remove();
+                $(tr).fadeOut(500);
             }
         });
     });
