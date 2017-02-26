@@ -35,7 +35,7 @@ kvstore.getAllAsList = function(cb) {
         for (var k in kvMap) {
             var v = kvMap[k];
             ret.push({k, v});
-        };
+        }
         cb(err, ret);
     });
 };

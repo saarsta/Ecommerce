@@ -9,10 +9,10 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-emailer = {}
+emailer = {};
 
 emailer.sendOrderConfirmation = function (address, firstName, cb) {
-    // setup email data with unicode symbols
+    // setup email data
     let mailOptions = {
         from: '"ECOMMERCE" <ecommerce@ecommerce.com>',
         to: address,

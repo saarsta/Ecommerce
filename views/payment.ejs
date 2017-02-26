@@ -11,14 +11,17 @@
                 </select>
             </div>
             <div class="formRow rowContainer">
-                <input class="halfRow floatRight" type="text"  required name="firstName" placeholder="First name">
-                <input class="halfRow floatLeft" type="text" required name="lastName" placeholder="Last name">
+                <input class="halfRow floatLeft" type="text"  required name="firstName" placeholder="First name">
+                <input class="halfRow floatRight" type="text" required name="lastName" placeholder="Last name">
             </div>
             <div class="formRow">
                 <input type="email" required name="email" placeholder="Your email">
             </div>
             <div class="formRow">
-                <input class="totalPrice" type="text" required name="totalPrice" data-price="<%=totalPrice%>" value="Total: $<%=totalPrice%>" disabled>
+                <input class="totalPrice" type="text" required name="totalPrice"
+                       data-price="<%=purchaseInfo.totalPrice%>"
+                       value="Total: <%=purchaseInfo.currency%><%=purchaseInfo.totalPrice%>"
+               disabled>
             </div>
             <div class="formRow alignToRight">
                 <button class="button" type="submit">Place Order</button>

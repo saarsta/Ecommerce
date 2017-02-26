@@ -6,10 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var admin = require('./routes/admin');
 
 var app = express();
 
-app.use(require('express-partials')());//so we can use layout
+// so we can use layout
+app.use(require('express-partials')());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,8 +27,9 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//routing
 app.use('/', index);
-app.use('/admin',require('./routes/admin')); //added admin
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

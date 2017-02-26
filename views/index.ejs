@@ -15,8 +15,8 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select></li></li>
-    <li class="totalPrice">Total: $<span><%= ticketPrice %></span>
-    <li class="grey"><a href="/payment?p=<%=ticketPrice%>" class="button paymentLink">Buy Now</a></li>
+    <li class="totalPrice">Total: <%= ticketInfo.currency %><span><%= ticketInfo.price %></span>
+    <li class="grey"><a href="/payment?p=<%=ticketInfo.price%>" class="button paymentLink">Buy Now</a></li>
   </ul>
 </div>
 

@@ -1,159 +1,74 @@
-[
-  {
-    "k": "28478c50-fb4d-11e6-a789-f1f02fffb1a2",
-    "v": {
-      "email": "shiri.marron@gmail.com",
-      "firstName": "שירי",
-      "lastName": "מרון",
-      "country": "מרון"
-    }
+{
+  "1268d060-fc24-11e6-997a-ab6f1a5b59d8": {
+    "email": "saarst3a@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488114253926
   },
-  {
-    "k": "61645e00-fb4d-11e6-86dd-9512af90905c",
-    "v": {
-      "email": "shiri.marron@gmail.com",
-      "firstName": "שירי",
-      "lastName": "מרון",
-      "country": "מרון"
-    }
+  "4a0219e0-fc25-11e6-997a-ab6f1a5b59d8": {
+    "email": "saarst1a@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488114776702
   },
-  {
-    "k": "7ce8e470-fb4d-11e6-86dd-9512af90905c",
-    "v": {
-      "email": "123@gmail.com",
-      "firstName": "saa",
-      "lastName": "מרוןfdsfdf",
-      "country": "מרוןfdsfdf"
-    }
+  "cda1b5b0-fc27-11e6-997a-ab6f1a5b59d8": {
+    "email": "saarstadev@gmail.com",
+    "firstName": "saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "20",
+    "timestamp": 1488115856523
   },
-  {
-    "k": "41984d60-fb4e-11e6-9056-a3ff8a430619",
-    "v": {
-      "email": "123@gmail.com",
-      "firstName": "sdsad",
-      "lastName": "sfd;lksda;f",
-      "country": "sfd;lksda;f",
-      "totalPrice": "$10"
-    }
+  "c5e43ea0-fc28-11e6-bb5c-4537375e6cb4": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488116273035
   },
-  {
-    "k": "dc3bed90-fb71-11e6-94f2-a735b6dd5b81",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Sd",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
+  "6f7d5a30-fc53-11e6-bfff-f324789e4ab5": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488134596436
   },
-  {
-    "k": "ba444a60-fb72-11e6-acea-7bbe3e0b3718",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
+  "00dafc70-fc55-11e6-b911-e5eaeee48b02": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488135269816
   },
-  {
-    "k": "fa50ed70-fb72-11e6-abbe-130ceacd530a",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
+  "e50e5400-fc55-11e6-b93b-45a9776e4141": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488135652673
   },
-  {
-    "k": "823c8040-fb74-11e6-abbe-130ceacd530a",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
+  "28bc03e0-fc5c-11e6-9acd-bb47b932bab8": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "10",
+    "timestamp": 1488138343198
   },
-  {
-    "k": "a025d1b0-fb74-11e6-abbe-130ceacd530a",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
-  },
-  {
-    "k": "baa459d0-fb74-11e6-abbe-130ceacd530a",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
-  },
-  {
-    "k": "82a90840-fb75-11e6-be7e-cbc7b3d83623",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$40"
-    }
-  },
-  {
-    "k": "1a1f7cd0-fb77-11e6-b804-05e5e52bd3cd",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$40"
-    }
-  },
-  {
-    "k": "3e2215c0-fb77-11e6-b9ba-95f0769e2278",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
-  },
-  {
-    "k": "55460130-fb77-11e6-b9ba-95f0769e2278",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
-  },
-  {
-    "k": "669b1ba0-fb77-11e6-962e-81a7cc22b7bb",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
-  },
-  {
-    "k": "7d632b70-fb77-11e6-b426-ed69fce3568a",
-    "v": {
-      "email": "saarsta@gmail.com",
-      "firstName": "Saar",
-      "lastName": "Stauber",
-      "country": "Stauber",
-      "totalPrice": "$10"
-    }
+  "603a67d0-fc5c-11e6-9acd-bb47b932bab8": {
+    "email": "saarsta@gmail.com",
+    "firstName": "Saar",
+    "lastName": "Stauber",
+    "country": "il",
+    "totalPrice": "30",
+    "timestamp": 1488138436301
   }
-]
+}
