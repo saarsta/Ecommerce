@@ -18,8 +18,14 @@ a {
     box-sizing: border-box;
 }
 
+.totalPrice {
+    text-align: center;
+    font-weight: bold;
+}
+
 .title {
     text-align: center;
+    color: black;
 }
 /* Create three columns of equal width */
 .columns {
@@ -52,10 +58,17 @@ a {
 
 /* List items */
 .ticketInfo li, .ticketInfo select {
-    border-bottom: 1px solid #eee;
-    padding: 20px;
     color: black;
     text-align: center;
+}
+
+.ticketInfo li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+}
+
+.ticketInfo select {
+    margin-left: 8px
 }
 
 /* Grey list item */
@@ -69,7 +82,7 @@ a {
     font-size: 20px;
 }
 
-/* The "Sign Up" button */
+/* The order button */
 .button {
     background-color: #4CAF50;
     border: none;
@@ -78,6 +91,11 @@ a {
     text-align: center;
     text-decoration: none;
     font-size: 18px;
+    cursor: pointer;
+}
+
+.formRow .button {
+    padding: 7px 25px;
 }
 
 /*change width for really small screens*/
@@ -92,19 +110,11 @@ a {
     width: 100%;
 }
 
-/*
-#paymentForm {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-*/
-
-
 /*form css*/
 .mainContent {
     width: 50%;
     margin: 0 auto;
+    background-color: rgba(51, 160, 217, 0.2);
 }
 
 .formRow {
@@ -114,23 +124,61 @@ a {
 .formRow input{
     width: 100%;
     margin: 0 auto;
+    padding-top: 2%;
+}
+
+.formRow select{
+    padding-top: 2%;
+}
+
+.rowContainer {
+    width: 100%;
+    display: inline-block;
 }
 
 .formRow .halfRow{
+    display: inline-block;
     width: 49%;
-    padding-right: 2%;
 }
 
-.marginRight {
+.mainContent{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.mainContent{
+    border: none;
+}
+
+.floatRight {
+    float: right;
+}
+
+.floatLeft {
+    float: left;
+}
+.alignToRight {
     text-align: right;
 }
-
 
 #thankYouMessage{
     position:relative;
     display:none;
 }
 
+.orderConfirmed{
+    position:relative;
+    display:none;
+    text-align: center;
+}
+
+.orderConfirmed h2{
+    padding-bottom: 5%;
+}
 /* Loader animation */
 #loadingAnimation{
     position:relative;
