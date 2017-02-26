@@ -4,21 +4,19 @@
 <div class="columns">
   <ul class="ticketInfo">
     <li class="header">Ticket</li>
-    <li class="grey">$<span class="price">10</span></li>
-    <li>Central Tel Aviv</li>
+    <li class="grey">Only For $<span class="price">10</span></li>
     <li>Free Drinks</li>
     <li>Disco Music</li>
     <li>Online Tickets Only</li>
-    <li class="totalPrice">Total Price is $<span><%= ticketPrice %></span></li>
-    <li class="grey">
-      <select class="ticketsAmount" name="ticketNumber" required>
+    <li>Number Of Tickets<select class="ticketsAmount" name="ticketNumber" required>
         <option value="1" selected="selected">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-      </select>
-      <a href="/payment?p=<%= ticketPrice %>" class="button paymentLink">Buy Now</a></li>
+      </select></li></li>
+    <li class="totalPrice">Total: $<span><%= ticketPrice %></span>
+    <li class="grey"><a href="/payment?p=<%=ticketPrice%>" class="button paymentLink">Buy Now</a></li>
   </ul>
 </div>
 

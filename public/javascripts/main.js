@@ -15,29 +15,28 @@ $(function(){
     $('#paymentForm').submit(function(e){
         e.preventDefault();
         var form = this;
+        var container = $(form).closest('.mainContent');
         var params = ['email','firstName','lastName','country', 'totalPrice'];
         var body = {};
         params.forEach(function(param){
             body[param] = $('[name="' + param + '"]',form).val();
-            /*body["date"] = Date.now();*/
         });
-        $('#paymentForm').hide();
+
+        $(container).hide();
         $('#loadingAnimation').show();
         $.post('/payment', body).done(function(data){
+            var thankMessage = $('#thankYouMessage');
             $('#loadingAnimation').hide();
-            $('#thankYouMessage').show();
-            $('#thankYouMessage').fadeOut(2700, function() {
-                $(form).show();
-            });
+            thankMessage.show();
+            thankMessage.fadeOut(2700, function() {
+                var $orderConfirmed = $('.orderConfirmed');
+                $orderConfirmed.find('.email').text(body['email']);
+                $orderConfirmed.show();
 
-            //alert(data);
-            /*
-             // redirect to home page
-             window.location.replace("../");
-             */
+            });
         }).fail(function(e){
             $('#loadingAnimation').hide();
-            $(form).show();
+            $(container).show();
             alert(e);
         });
     });
