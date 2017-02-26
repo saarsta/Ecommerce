@@ -374,3 +374,15 @@ a {
         -moz-transform:scale(0.5, 1);
     }
 }
+
+/*admin*/
+
+table {
+    margin: 0 auto;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: center;
+}

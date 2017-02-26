@@ -1,28 +1,27 @@
 
-
-<table>
-    <thead>
-    <th>Line</th>
-    <th>Email</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Country</th>
-    <th>Amount</th>
-    <th>Delete</th>
-    </thead>
-    <tbody>
+    <table>
+        <thead>
+        <th>Line</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Country</th>
+        <th>Amount</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
         <% trans.forEach(function(transRow){ %>
-            <tr class="trans" data-id="<%= transRow.uuid %>">
-                <td><%= transRow.lineNumber%></td>
-                <td><%= transRow.email%></td>
-                <td><%= transRow.firstName %></td>
-                <td><%= transRow.lastName%></td>
-                <td><%= transRow.country%></td>
-                <td><%= transRow.totalPrice%></td>
-                <td class="delete">
-                    <a href="#">x</a>
-                </td>
-            </tr>
+        <tr class="trans" data-id="<%= transRow.uuid %>">
+            <td><%= transRow.lineNumber%></td>
+            <td><%= transRow.email%></td>
+            <td><%= transRow.firstName %></td>
+            <td><%= transRow.lastName%></td>
+            <td><%= transRow.country%></td>
+            <td><%= transRow.totalPrice%></td>
+            <td class="delete">
+                <a href="#">x</a>
+            </td>
+        </tr>
         <% }) %>
-    </tbody>
-</table>
+        </tbody>
+    </table>

@@ -16,8 +16,9 @@ $(function(){
         e.preventDefault();
         var form = this;
         var container = $(form).closest('.mainContent');
-        var params = ['email','firstName','lastName','country', 'totalPrice'];
+        var params = ['email','firstName','lastName','country'];
         var body = {};
+        body = {totalPrice: $('[name="totalPrice"]', form).data('price')};
         params.forEach(function(param){
             body[param] = $('[name="' + param + '"]',form).val();
         });
@@ -50,7 +51,8 @@ $(function(){
             url: '/admin/payment?id=' + id,
             type: 'DELETE',
             success: function(result) {
-                $(tr).remove();
+                $(tr).fadeOut(500);
+               /* $(tr).remove();*/
             }
         });
     });
