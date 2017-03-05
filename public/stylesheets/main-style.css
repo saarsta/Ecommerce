@@ -168,8 +168,11 @@ a {
 
 .orderConfirmed{
     position:relative;
-    display:none;
     text-align: center;
+}
+
+.successWrapper .orderConfirmed {
+    display:none;
 }
 
 .orderConfirmed h2{
@@ -178,6 +181,24 @@ a {
 
 .orderConfirmed span {
     color: purple;
+}
+
+
+
+.formRow.orderTotal {
+    text-align: right;
+    padding-right: 0%;
+    font-size: initial;
+}
+
+.formRow.orderTotal div
+{
+    color: purple;
+}
+
+#paymentForm h3 {
+    color: black;
+    text-align: center;
 }
 
 /* Loader animation */
@@ -384,3 +405,4 @@ td, th {
     padding: 0.5rem;
     text-align: center;
 }
+

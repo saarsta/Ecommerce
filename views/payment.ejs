@@ -1,7 +1,9 @@
-
 <div class="mainContent">
     <form id="paymentForm">
-        <h1 class="title"> Enter your details</h1>
+        <h1 class="title">Enter your details</h1>
+
+        <h3 class="description" name="productDescription"><%= purchaseInfo.description %></h3>
+
         <div>
             <div class="formRow">
                 <select name="country" required>
@@ -11,17 +13,17 @@
                 </select>
             </div>
             <div class="formRow rowContainer">
-                <input class="halfRow floatLeft" type="text"  required name="firstName" placeholder="First name">
+                <input class="halfRow floatLeft" type="text" required name="firstName" placeholder="First name">
                 <input class="halfRow floatRight" type="text" required name="lastName" placeholder="Last name">
             </div>
             <div class="formRow">
                 <input type="email" required name="email" placeholder="Your email">
             </div>
-            <div class="formRow">
-                <input class="totalPrice" type="text" required name="totalPrice"
-                       data-price="<%=purchaseInfo.totalPrice%>"
-                       value="Total: <%=purchaseInfo.currency%><%=purchaseInfo.totalPrice%>"
-               disabled>
+            <div class="formRow orderTotal">
+                <div>
+                    Total: <%= purchaseInfo.currency %>
+                    <sapn name="totalPrice"><%= purchaseInfo.totalPrice %></sapn>
+                </div>
             </div>
             <div class="formRow alignToRight">
                 <button class="button" type="submit">Place Order</button>
@@ -36,13 +38,9 @@
     </div>
 </div>
 
-<div id="thankYouMessage">
-    <h1 class="title"> Your order is on it's way! </h1>
+<div class='successWrapper'>
+    <%- include thankyou.ejs %>
 </div>
 
-<div class="orderConfirmed">
-    <h2 class="title"> Order confirmation was sent to: <span class="email"></span> </h2>
-    <a href="/" class="button ">Continue Shopping</a>
-</div>
 
 <div class="modal"></div>

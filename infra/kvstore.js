@@ -6,13 +6,13 @@ kvstore = {};
 kvstore.setDbPath = function (dbpath) {
     kvstore.dbPath = dbpath;
     if (!fs.existsSync(dbpath)) {
-        writeToFile({}, function () {});
+        writeToFile({}, function () {
+        });
     }
 };
 
 var writeToFile = function (kvMap, cb) {
     fs.writeFile(kvstore.dbPath, JSON.stringify(kvMap, null, 2), 'utf8', function (err) {
-        if (err) console.log(err);
         cb(err);
     });
 };
@@ -20,7 +20,6 @@ var writeToFile = function (kvMap, cb) {
 var readFromFile = function (cb) {
     fs.readFile(kvstore.dbPath, 'utf8', function (err, data) {
         if (err) {
-            console.log(err);
             cb(err);
         } else {
             var kvMap = JSON.parse(data);
@@ -29,8 +28,8 @@ var readFromFile = function (cb) {
     });
 };
 
-kvstore.getAllAsList = function(cb) {
-    readFromFile(function(err, kvMap) {
+kvstore.getAllAsList = function (cb) {
+    readFromFile(function (err, kvMap) {
         var ret = [];
         for (var k in kvMap) {
             var v = kvMap[k];
@@ -40,7 +39,7 @@ kvstore.getAllAsList = function(cb) {
     });
 };
 
-kvstore.put = function(k, v, cb) {
+kvstore.put = function (k, v, cb) {
     readFromFile(function (err, kvMap) {
         if (err) {
             cb(err);
@@ -51,7 +50,7 @@ kvstore.put = function(k, v, cb) {
     });
 };
 
-kvstore.remove = function(k, cb) {
+kvstore.remove = function (k, cb) {
     readFromFile(function (err, kvMap) {
         if (err) {
             cb(err);

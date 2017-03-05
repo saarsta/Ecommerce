@@ -1,0 +1,13 @@
+<div id="thankYouMessage">
+    <h1 class="title">Your order is on it's way! </h1>
+</div>
+
+<div class="orderConfirmed">
+    <h2 class="title">Order confirmation was sent to: <span class="email">
+            <% if  (locals.email) { %>
+            <%= email %>
+            <% } %>
+        </span></h2>
+    <a href="/" class="button ">Continue Shopping</a>
+</div>
+

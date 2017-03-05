@@ -1,45 +1,77 @@
-var paypal = require('paypal-rest-sdk');
-var _ = require('underscore');
+var ppwrapper = require('paypal-rest-sdk');
+var config = require('../config');
 
-ppwrapper = {};
+const ROOT_PATH = 'http://localhost:3000';
 
-ppwrapper.foo = function (cb) {
-    var payment = {
-        "intent": "sale",
-        "payer": {
-            "payment_method": "paypal"
+ppwrapper.configure({
+    'mode': 'sandbox', //sandbox or live
+    'client_id': config.paypal.client_id,
+    'client_secret': config.paypal.client_secret
+});
+
+exports.startCheckout = function (params, callback) {
+    ppwrapper.payment.create({
+        intent: "sale",
+        payer: {
+            payment_method: "paypal"
         },
-        "redirect_urls": {
-            "return_url": "http://yoururl.com/execute",
-            "cancel_url": "http://yoururl.com/cancel"
+        redirect_urls: {
+            return_url: ROOT_PATH + "/paypal/approved?params=" + encodeURIComponent(JSON.stringify(params)),
+            cancel_url: ROOT_PATH + "/paypal/canceled"
         },
-        "transactions": [{
-            "amount": {
-                "total": "5.00",
-                "currency": "USD"
-            },
-            "description": "My awesome payment"
-        }]
-    };
+        transactions: [
+            {
+                item_list: {
+                    items: [
+                        {
+                            name: params.productDescription,
+                            price: parseFloat(params.totalPrice).toFixed(2),
+                            currency: "USD",
+                            quantity: 1
+                        }
+                    ]
+                },
+                amount: {
+                    currency: "USD",
+                    total: parseFloat(params.totalPrice).toFixed(2)
+                },
+                description: params.productDescription
+            }
+        ]
+    }, function (err, response) {
+        if (err)
+            return callback(err);
 
-    paypal.payment.create(payment, function (err, payment) {
-        if (err) {
-            console.log(err);
-            cb(err)
-        } else {
-            if(payment.payer.payment_method === 'paypal') {
-                //req.session.paymentId = payment.id;
-                var redirectUrl;
-                for(var i=0; i < payment.links.length; i++) {
-                    var link = payment.links[i];
-                    if (link.method === 'REDIRECT') {
-                        redirectUrl = link.href;
-                    }
-                }
-                cb()
+        var i, len, link, ref;
+        ref = response.links;
+        for (i = 0, len = ref.length; i < len; i++) {
+            link = ref[i];
+            if (link.method === 'REDIRECT') {
+                return callback(null, link.href);
             }
         }
+        return callback(new Error('bad response from paypal'));
     });
 };
 
-module.exports = ppwrapper;
+exports.executePayment = function (req, callback) {
+    var params = JSON.parse(req.query.params);
+
+    ppwrapper.payment.execute(req.query.paymentId, {
+        payer_id: req.query.PayerID,
+        transactions: [
+            {
+                amount: {
+                    currency: "USD",
+                    total: parseFloat(params.totalPrice)
+                }
+            }
+        ]
+    }, function (e, payment) {
+        if (e)
+            return callback(e);
+        params.paymentId = payment.id;
+        params.paymentType = "PAYPAL";
+        callback(null, params);
+    });
+};

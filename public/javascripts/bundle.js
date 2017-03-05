@@ -10225,7 +10225,7 @@ var $ = require('jquery');
 
 $(function(){
 
-    // when changong number of tickets
+    // when changing number of tickets
     $("select", ".ticketInfo").change(function() {
         // change total price and set it in the url
         var numOfTickets = parseInt($(this).find('option:selected').text());
@@ -10233,7 +10233,7 @@ $(function(){
         var totalPrice = numOfTickets * price;
 
         $('.totalPrice span').text(totalPrice);
-        $(".paymentLink", ".ticketInfo").attr("href", "/payment?p=" + totalPrice);
+        $(".paymentLink", ".ticketInfo").attr("href", "/payment?tp=" + totalPrice);
     });
 
     // on submit $.POST a new purchase
@@ -10241,25 +10241,32 @@ $(function(){
         e.preventDefault();
         var form = this;
         var container = $(form).closest('.mainContent');
-        var params = ['email','firstName','lastName','country'];
+        var params = ['email','firstName','lastName','country', 'totalPrice', 'productDescription'];
         var body = {};
-        body = {totalPrice: $('[name="totalPrice"]', form).data('price')};
 
         params.forEach(function(param){
-            body[param] = $('[name="' + param + '"]',form).val();
+            body[param] = $('[name="' + param + '"]',form).val() || $('[name="' + param + '"]',form).text();
         });
 
         $(container).hide();
         $('#loadingAnimation').show();
-        $.post('/payment', body).done(function(data){
-            var thankMessage = $('#thankYouMessage');
-            $('#loadingAnimation').hide();
-            thankMessage.show();
-            thankMessage.fadeOut(2700, function() {
-                var $orderConfirmed = $('.orderConfirmed');
-                $orderConfirmed.find('.email').text(body['email']);
-                $orderConfirmed.show();
-            });
+        $.post('/payment', body).done(function(response){
+
+            // redirect if necessary (getting back from 3rd party payment)
+            if(response.redirectURL){
+                location.href = response.redirectURL;
+                return;
+            }else {
+                // show thank you message
+                var thankMessage = $('#thankYouMessage');
+                $('#loadingAnimation').hide();
+                thankMessage.show();
+                thankMessage.fadeOut(2700, function() {
+                    var $orderConfirmed = $('.orderConfirmed');
+                    $orderConfirmed.find('.email').text(body['email']);
+                    $orderConfirmed.show();
+                });
+            }
         }).fail(function(e){
             $('#loadingAnimation').hide();
             $(container).show();
@@ -10268,7 +10275,7 @@ $(function(){
         });
     });
 
-    // delete purchase line (admin)
+    // delete transaction line (admin)
     $(".delete").on("click", function(){
         var tr = $(this).parent(".trans");
         var id = tr.data("id");
@@ -10282,4 +10289,6 @@ $(function(){
         });
     });
 });
+
+
 },{"jquery":1}]},{},[2]);

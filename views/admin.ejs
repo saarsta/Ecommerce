@@ -6,6 +6,9 @@
         <th>Last Name</th>
         <th>Country</th>
         <th>Amount In <%=currency%></th>
+        <th>description</th>
+        <th>Type</th>
+        <th>#Approval </th>
         <th>Delete</th>
         </thead>
         <tbody>
@@ -17,6 +20,9 @@
             <td><%= transRow.lastName%></td>
             <td><%= transRow.country%></td>
             <td><%= transRow.totalPrice%></td>
+            <td><%= transRow.productDescription%></td>
+            <td><%= transRow.paymentType%></td>
+            <td><%= transRow.paymentId%></td>
             <td class="delete">
                 <a href="#">x</a>
             </td>

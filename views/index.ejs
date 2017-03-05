@@ -1,22 +1,22 @@
-
 <h1 class="title"> TEL AVIV PURIM RAVE </h1>
 
 <div class="columns">
-  <ul class="ticketInfo">
-    <li class="header">Ticket</li>
-    <li class="grey">Only For $<span class="price">10</span></li>
-    <li>Free Drinks</li>
-    <li>Disco Music</li>
-    <li>Online Tickets Only</li>
-    <li>Number Of Tickets<select class="ticketsAmount" name="ticketNumber" required>
-        <option value="1" selected="selected">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select></li></li>
-    <li class="totalPrice">Total: <%= ticketInfo.currency %><span><%= ticketInfo.price %></span>
-    <li class="grey"><a href="/payment?p=<%=ticketInfo.price%>" class="button paymentLink">Buy Now</a></li>
-  </ul>
+    <ul class="ticketInfo">
+        <li class="header">Party Ticket</li>
+        <li class="grey">Only For $<span class="price">10</span></li>
+        <li>Free Drinks</li>
+        <li>Disco Music</li>
+        <li>Online Tickets Only</li>
+        <li>Number Of Tickets<select class="ticketsAmount" name="ticketNumber" required>
+                <option value="1" selected="selected">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select></li>
+        </li>
+        <li class="totalPrice">Total: <%= ticketInfo.currency %><span><%= ticketInfo.price %></span>
+        <li class="grey"><a href="/payment?tp=<%= ticketInfo.price %>" class="button paymentLink">Buy Now</a></li>
+    </ul>
 </div>
 

@@ -11,21 +11,20 @@ let transporter = nodemailer.createTransport({
 
 emailer = {};
 
-emailer.sendOrderConfirmation = function (address, firstName, cb) {
+emailer.sendOrderConfirmation = function (address, firstName, payment_id, cb) {
     // setup email data
     let mailOptions = {
         from: '"ECOMMERCE" <ecommerce@ecommerce.com>',
         to: address,
         subject: 'Order Confirmation',
-        text: 'Hello ' + firstName + ',\n\n' +  "Your ticket is on the way." + '\n\n' + "Bless," + '\n' + "ECOMMERCE",
+        text: 'Hello ' + firstName + ',\n\n' + "Your ticket is on the way." + '\n' + "Your purchase number is: " + payment_id + '\n\n' + "Bless," + '\n' + "ECOMMERCE",
     };
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (err, info) => {
-        if (err){
-            console.error(err);
-           cb(err);
-        }else {
+        if (err) {
+            cb(err);
+        } else {
             console.log('Message sent: ' + info.response);
             cb(err, info);
         }

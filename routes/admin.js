@@ -1,7 +1,6 @@
 var basicAuth = require('basic-auth');
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
 var _ = require('underscore');
 var config = require('../config.js');
 var payments = require('../model/payments.js');
@@ -27,12 +26,14 @@ var auth = function (req, res, next) {
 };
 
 // GET purchases sorted list
-router.get('/',auth, function(req,res){
-    payments.getAll(function(err, transRows){
-        if (err){
-            return res.status(500).send(err.stack);
+router.get('/', auth, function (req, res, next) {
+    payments.getAll(function (err, transRows) {
+        if (err) {
+            return next(err);
         }
-        transRows = _.sortBy(transRows, function(t) { return t.timestamp; });
+        transRows = _.sortBy(transRows, function (t) {
+            return t.timestamp;
+        });
 
         // add row number to transaction
         var c = 1;
@@ -40,16 +41,16 @@ router.get('/',auth, function(req,res){
             row.lineNumber = c++;
             return row;
         });
-        res.render('admin',{trans: transRows, currency : config.ticket.currency});
+        res.render('admin', {trans: transRows, currency: config.ticket.currency});
     });
 });
 
 // on delete transaction
-router.delete('/payment', function(req, res){
+router.delete('/payment', function (req, res, next) {
     var transIdd = req.query.id;
 
-    payments.deleteTransaction(transIdd, function(err) {
-        if (err) return console.log(err);
+    payments.deleteTransaction(transIdd, function (err) {
+        if (err) return next(err);
         res.send('Deleted');
     });
 });

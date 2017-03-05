@@ -4,6 +4,8 @@
       <env name="DEBUG" value="untitled2:*" />
       <env name="NODEMAILER_USERNAME" value="saarstadev@gmail.com" />
       <env name="NODEMAILER_PASS" value="development19" />
+      <env name="PAYPAL_CLIENT_ID" value="ARvtpo8GAgzDzWDGWwB8He0vtJw0iH_V9fcO-vzn5vyybXOqoLHRaxYrib4q_zKvsj5v8xzIWqg--QbQ" />
+      <env name="PAYPAL_CLIENT_SECRET" value="EF3tJX44uZtwqEhJ_1VApnQciFLgccEXt9qpEb9dJo9u1SgV_lxih9yj9R85K0ztpA8MIO6urjYrcpsN" />
     </envs>
     <browser url="http://localhost:3000/" />
     <method />
